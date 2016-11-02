@@ -5,19 +5,16 @@
   
   <title>RxJava的简单介绍 | Stringwu&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="##1. RxJava简介Rx（ReactiveX，响应式编程）是一种事件驱动的基于异步数据流的编程模式，整个数据流就像一条河流，它可以被观测（监听），过滤，操控或者与其他数据流合并为一条新的数据流。而RxJava是.Net Rx在JVM上的实现。RxJava可以应用于大部分基于JVM的语言，如Scala，Groovy等。整个RxJava+RxAndroid的包大小为（1125kb+10kb）
-#">
+  <meta name="description" content="本文主要介绍一下RxJava的相关知识，包括RxJava的特点，相关的操作符，以及怎样使用等">
 <meta property="og:type" content="article">
 <meta property="og:title" content="RxJava的简单介绍">
 <meta property="og:url" content="http://yoursite.com/2016/11/01/RxJava的简单介绍/index.html">
 <meta property="og:site_name" content="Stringwu's Blog">
-<meta property="og:description" content="##1. RxJava简介Rx（ReactiveX，响应式编程）是一种事件驱动的基于异步数据流的编程模式，整个数据流就像一条河流，它可以被观测（监听），过滤，操控或者与其他数据流合并为一条新的数据流。而RxJava是.Net Rx在JVM上的实现。RxJava可以应用于大部分基于JVM的语言，如Scala，Groovy等。整个RxJava+RxAndroid的包大小为（1125kb+10kb）
-#">
-<meta property="og:updated_time" content="2016-11-02T11:25:05.000Z">
+<meta property="og:description" content="本文主要介绍一下RxJava的相关知识，包括RxJava的特点，相关的操作符，以及怎样使用等">
+<meta property="og:updated_time" content="2016-11-02T11:46:30.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="RxJava的简单介绍">
-<meta name="twitter:description" content="##1. RxJava简介Rx（ReactiveX，响应式编程）是一种事件驱动的基于异步数据流的编程模式，整个数据流就像一条河流，它可以被观测（监听），过滤，操控或者与其他数据流合并为一条新的数据流。而RxJava是.Net Rx在JVM上的实现。RxJava可以应用于大部分基于JVM的语言，如Scala，Groovy等。整个RxJava+RxAndroid的包大小为（1125kb+10kb）
-#">
+<meta name="twitter:description" content="本文主要介绍一下RxJava的相关知识，包括RxJava的特点，相关的操作符，以及怎样使用等">
   
     <link rel="alternate" href="/atom.xml" title="Stringwu&#39;s Blog" type="application/atom+xml">
   
@@ -63,7 +60,7 @@
         
           <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
         
-        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
       </nav>
       <div id="search-form-wrap">
         <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
@@ -94,9 +91,10 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>##1. RxJava简介<br>Rx（ReactiveX，响应式编程）是一种事件驱动的基于异步数据流的编程模式，整个数据流就像一条河流，它可以被观测（监听），过滤，操控或者与其他数据流合并为一条新的数据流。而RxJava是.Net Rx在JVM上的实现。RxJava可以应用于大部分基于JVM的语言，如Scala，Groovy等。整个RxJava+RxAndroid的包大小为（1125kb+10kb）</p>
-<p>##2.RxJava特点</p>
-<ul>
+        <p>本文主要介绍一下RxJava的相关知识，包括RxJava的特点，相关的操作符，以及怎样使用等</p>
+<a id="more"></a>
+<h2 id="1-RxJava简介"><a href="#1-RxJava简介" class="headerlink" title="1. RxJava简介"></a>1. RxJava简介</h2><p>Rx（ReactiveX，响应式编程）是一种事件驱动的基于异步数据流的编程模式，整个数据流就像一条河流，它可以被观测（监听），过滤，操控或者与其他数据流合并为一条新的数据流。而RxJava是.Net Rx在JVM上的实现。RxJava可以应用于大部分基于JVM的语言，如Scala，Groovy等。整个RxJava+RxAndroid的包大小为（1125kb+10kb）</p>
+<h2 id="2-RxJava特点"><a href="#2-RxJava特点" class="headerlink" title="2.RxJava特点"></a>2.RxJava特点</h2><ul>
 <li>函数响应式编程（Functional Reactive Programming,FRP）</li>
 <li>异步</li>
 <li>事件驱动的</li>
@@ -104,19 +102,18 @@
 <li>专门的出错处理，当使用RxJava出现错误时，它不会直接抛出异常，而是会执行OnError（）方法；</li>
 <li>并发，可以很容易实现多线程</li>
 </ul>
-<p>##3.RxJava的基本概念<br><code>RxJava</code>最核心的两个东西是<code>Observables</code>（被观察者，事件源）和<code>Subscribers</code>（观察者），<code>Observables</code>发出一系列事件，<code>Subscribers</code>处理这些事件。而<code>RxJava</code>的<code>Observables</code>是扩展自设计模式中的观察者模式，添加了以下几个能力：</p>
+<h2 id="3-RxJava的基本概念"><a href="#3-RxJava的基本概念" class="headerlink" title="3.RxJava的基本概念"></a>3.RxJava的基本概念</h2><p><code>RxJava</code>最核心的两个东西是<code>Observables</code>（被观察者，事件源）和<code>Subscribers</code>（观察者），<code>Observables</code>发出一系列事件，<code>Subscribers</code>处理这些事件。而<code>RxJava</code>的<code>Observables</code>是扩展自设计模式中的观察者模式，添加了以下几个能力：</p>
 <ul>
 <li>onCompleted(),当没有新的可用数据时，通知<code>Observables</code>；</li>
 <li>onError()，当发生错误时，通知<code>Observables</code>，但不会直接将错误或异常直接抛出；</li>
 </ul>
-<p>###3.1 四个关键概念</p>
-<ul>
+<h3 id="3-1-四个关键概念"><a href="#3-1-四个关键概念" class="headerlink" title="3.1 四个关键概念"></a>3.1 四个关键概念</h3><ul>
 <li>Observable，产生事件（事件源）</li>
 <li>Observer， 根据事件作出相应的响应</li>
 <li>Subscriber，实现了Observer的抽象类，</li>
 <li>Subjects，Observable + Observer</li>
 </ul>
-<p>####3.1.1 Observable<br>Observable在存活期间，生命周期包含三个可能的事件，与迭代器的生命周期很类似：</p>
+<h4 id="3-1-1-Observable"><a href="#3-1-1-Observable" class="headerlink" title="3.1.1 Observable"></a>3.1.1 Observable</h4><p>Observable在存活期间，生命周期包含三个可能的事件，与迭代器的生命周期很类似：</p>
 <table>
 <thead>
 <tr>
@@ -161,16 +158,14 @@
 <li>interval(),创建一个按固定间隔发送整数序列的Observable，</li>
 <li>timer(),创建一个Observable在给定的延迟后发送<strong>一个</strong>特殊的值；</li>
 </ul>
-<p>####3.1.2 Subject<br>Subject = Observable + Observer<br>这意味着一个Subject可以同时是观察者和被观察者，事件源(Observable),也就是说Subject可以像观察者一样订阅一个事件源，并且可以像Observable一样输出它们收到的事件。RxJava提供了四种不同类型的subjects:</p>
+<h4 id="3-1-2-Subject"><a href="#3-1-2-Subject" class="headerlink" title="3.1.2 Subject"></a>3.1.2 Subject</h4><p>Subject = Observable + Observer<br>这意味着一个Subject可以同时是观察者和被观察者，事件源(Observable),也就是说Subject可以像观察者一样订阅一个事件源，并且可以像Observable一样输出它们收到的事件。RxJava提供了四种不同类型的subjects:</p>
 <ul>
 <li>PublishSubject,</li>
 <li>BehaviorSubject,输出它观察到的大部分最近的Items和随后观察的Items到所有的订阅者，初始化时需要一个初始值来做为最近的Items</li>
 <li>ReplaySubject,将它观察到的所有数据重复发送到所有订阅了的观察者；</li>
 <li>AsyncSubject, 在整个Observable完成后，将最后观察到的Items发送给每一个订阅者；</li>
 </ul>
-<p>##4. RxJava的操作符</p>
-<p>###4.1 过滤</p>
-<ul>
+<h2 id="4-RxJava的操作符"><a href="#4-RxJava的操作符" class="headerlink" title="4. RxJava的操作符"></a>4. RxJava的操作符</h2><h3 id="4-1-过滤"><a href="#4-1-过滤" class="headerlink" title="4.1 过滤"></a>4.1 过滤</h3><ul>
 <li>filter(),过滤掉不需要的数据，只有返回true 的数据才会被使用；</li>
 <li>take(int n),只取返回数据中的前n个，skip(int n)跳过前n个数据；</li>
 <li>takeLast(int n)，只取数据的最后n个,skipLast(int n)；</li>
@@ -182,8 +177,7 @@
 <li>timeout(),如果在给定时间间隔内，没有输出有效数据，则会执行onError(); </li>
 <li>delay() 用于事件流中，延迟一段时间再发送来自Observable的结果；</li>
 </ul>
-<p>####4.2 映射</p>
-<ul>
+<h4 id="4-2-映射"><a href="#4-2-映射" class="headerlink" title="4.2 映射"></a>4.2 映射</h4><ul>
 <li>map(),用来映射简单的数据</li>
 <li>flatMap(),用来映射队列等，但可能会改变数据的顺序</li>
 <li>concatMap(),解决了fmp的交错的问题</li>
@@ -192,14 +186,18 @@
 <li>Scan(),类似于一个累加的方法，后一个item是前面item的后再加上原来的item; </li>
 <li>GroupBy(),</li>
 <li>buffer(int n),将数据作为列表(每n个数据作为一个列表)输出而不是单个的Items; </li>
-<li>cast() 类似于map();<br>####4.3 合并</li>
+<li>cast() 类似于map(); </li>
+</ul>
+<h4 id="4-3-合并"><a href="#4-3-合并" class="headerlink" title="4.3 合并"></a>4.3 合并</h4><ul>
 <li>merge()可以将多个输入整合成一个输出（并不会合并Items）；</li>
 <li>zip(),可以将多个输入整合成一个输出（会合并Items）；</li>
 </ul>
-<p>####4.3 重试</p>
-<ul>
+<h4 id="4-4-重试"><a href="#4-4-重试" class="headerlink" title="4.4 重试"></a>4.4 重试</h4><ul>
 <li>retryWhen(),当接收到onError()事件时，触发重新订阅（发生某些错误时，需要做什么工作）；</li>
-<li>repeat(),当接收到onComplete()事件时，触发重新订阅<br>####4.4 线程的调度（Schedulers）<br>RxJava提供了5种类型的调度者：<br>Schedulers</li>
+<li>repeat(),当接收到onComplete()事件时，触发重新订阅;</li>
+</ul>
+<h4 id="4-5-线程的调度（Schedulers）"><a href="#4-5-线程的调度（Schedulers）" class="headerlink" title="4.5 线程的调度（Schedulers）"></a>4.5 线程的调度（Schedulers）</h4><p>RxJava提供了5种类型的调度者：<br>Schedulers</p>
+<ul>
 <li>.io(), 使用线程池来为IO操作进行调度，但没有骑士线程池的大小 作限制，因此使用时需要考虑内存的使用</li>
 <li>.computation()，与IO无关的计算型调度，有很多RxJava相关的默认方法：buffer(),debounce(),delay(),interval()等默认是在该类线程中执行；</li>
 <li>.immediate()，在当前线程中快速开始某项操作，是方法：timeout(),timeInterval等的默认调度器；</li>
@@ -208,32 +206,22 @@
 </ul>
 <p>RxAndroid还提供了一个Android特有的调度器：AndroidSchedulers.mainThread()来让代码在UI主线程中执行；</p>
 <p>RxJava提供了一个每一个Observables都可以使用的subscribeOn()，ObserveOn（）方法，将Scheduler与Observables建立联系，我们可以这样来使用：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">.subscribeOn(Schedulers.io())  <span class="comment">// 让事件的产生发生在IO线程,多次调用，以最后一次调用的结果为准</span></div><div class="line">.observeOn(AndroidSchedulers.mainThread()) <span class="comment">// 让事件的回调发生在UI主线程中</span></div><div class="line">.subscribe(....)</div></pre></td></tr></table></figure></p>
-<p>##5. RxAndroid<br>前面版本的RxAndroid还提供了AppObservable,ViewObservable,WidgetObservable,LifecycleObservable 等，但最新版本的RxAndroid直接删掉了这些；</p>
+<h2 id="5-RxAndroid"><a href="#5-RxAndroid" class="headerlink" title="5. RxAndroid"></a>5. RxAndroid</h2><p>前面版本的RxAndroid还提供了AppObservable,ViewObservable,WidgetObservable,LifecycleObservable 等，但最新版本的RxAndroid直接删掉了这些；</p>
 <p>相关的使用例子可参考<a href="https://github.com/klnusbaum/rxandroidexamples" target="_blank" rel="external"><font color="blue">这个</font></a>，也可以参考我写的<a href="https://github.com/WoodJim/RxAndroidDemo" target="_blank" rel="external"><font color="blue"> 小Demo </font></a></p>
-<p>##6.参考文献：<br><a href="http://hackeris.me/2015/02/11/reandroid1/" target="_blank" rel="external"><font color="blue"> 1 </font></a><br><a href="http://blog.danlew.net/2014/10/08/grokking-rxjava-part-4/" target="_blank" rel="external"><font color="blue"> Grokking RxJava,Part 4 </font></a><br><a href="http://www.jianshu.com/p/7e28c8216c7d" target="_blank" rel="external"><font color="blue"> RxJava处理网络失败 </font></a><br><a href="https://www.packtpub.com/application-development/rxjava-essentials" target="_blank" rel="external"><font color="blue"> RxJava Essentials </font></a><br><a href="https://gank.io/post/560e15be2dca930e00da1083" target="_blank" rel="external"><font color="blue"> 给Android开发者的RxJava详解 </font></a><br><a href="http://blog.piasy.com/2016/09/15/Understand-RxJava/" target="_blank" rel="external"><font color="blue"> 拆RxJava </font></a></p>
+<h2 id="6-参考文献："><a href="#6-参考文献：" class="headerlink" title="6.参考文献："></a>6.参考文献：</h2><p><a href="http://hackeris.me/2015/02/11/reandroid1/" target="_blank" rel="external"><font color="blue"> 1 </font></a><br><a href="http://blog.danlew.net/2014/10/08/grokking-rxjava-part-4/" target="_blank" rel="external"><font color="blue"> Grokking RxJava,Part 4 </font></a><br><a href="http://www.jianshu.com/p/7e28c8216c7d" target="_blank" rel="external"><font color="blue"> RxJava处理网络失败 </font></a><br><a href="https://www.packtpub.com/application-development/rxjava-essentials" target="_blank" rel="external"><font color="blue"> RxJava Essentials </font></a><br><a href="https://gank.io/post/560e15be2dca930e00da1083" target="_blank" rel="external"><font color="blue"> 给Android开发者的RxJava详解 </font></a><br><a href="http://blog.piasy.com/2016/09/15/Understand-RxJava/" target="_blank" rel="external"><font color="blue"> 拆RxJava </font></a></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/11/01/RxJava的简单介绍/" data-id="civ0u82j20000ee1bzwx2xgtx" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/11/01/RxJava的简单介绍/" data-id="civ0uzdeg0000gd1bwbr6bmwt" class="article-share-link">Share</a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/RxJava-RxAndroid/">RxJava RxAndroid</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/RxAndroid/">RxAndroid</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/RxJava/">RxJava</a></li></ul>
 
     </footer>
   </div>
   
     
-<nav id="article-nav">
-  
-  
-    <a href="/2016/11/01/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">Hello World</div>
-    </a>
-  
-</nav>
-
   
 </article>
 
@@ -246,9 +234,9 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Tags</h3>
+    <h3 class="widget-title">标签</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/RxJava-RxAndroid/">RxJava RxAndroid</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/RxAndroid/">RxAndroid</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RxJava/">RxJava</a></li></ul>
     </div>
   </div>
 
@@ -256,16 +244,16 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Tag Cloud</h3>
+    <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/RxJava-RxAndroid/" style="font-size: 10px;">RxJava RxAndroid</a>
+      <a href="/tags/RxAndroid/" style="font-size: 10px;">RxAndroid</a> <a href="/tags/RxJava/" style="font-size: 10px;">RxJava</a>
     </div>
   </div>
 
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
+    <h3 class="widget-title">归档</h3>
     <div class="widget">
       <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a></li></ul>
     </div>
@@ -275,16 +263,12 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
+    <h3 class="widget-title">最新文章</h3>
     <div class="widget">
       <ul>
         
           <li>
             <a href="/2016/11/01/RxJava的简单介绍/">RxJava的简单介绍</a>
-          </li>
-        
-          <li>
-            <a href="/2016/11/01/hello-world/">Hello World</a>
           </li>
         
       </ul>
